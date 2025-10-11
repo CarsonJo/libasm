@@ -1,4 +1,5 @@
-
+section .data
+	msg db "test %d",0
 section .text
 	global my_strlen
 my_strlen:

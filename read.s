@@ -1,5 +1,5 @@
 section .text
-	global my_read
+	global ft_read
 extern __errno_location
 error:
 	not rax
@@ -9,7 +9,7 @@ error:
 	mov [rax], rdx
 	mov rax, -1
 	ret
-my_read:
+ft_read:
 	push rbp
 	mov rbp,rsp
 	mov rax, 0

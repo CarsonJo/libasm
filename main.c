@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	char *test3 = "testereaaaaa\n";
 	char *test4 = ft_strdup(test2);
 	char *test5 = strdup(test2);
-	printf("strdup:%s%s\n", test4, test5);
+	printf("strdup:%sstrdup:%s\n", test4, test5);
 	printf("compare: %s%d %s%d\n", test, ft_strcmp(test, test2), test2, strcmp(test, test2));
 	printf("compare: %d, %d\n", ft_strcmp(test, test3),strcmp(test, test3));
 	char *ptr = ft_strcpy(buff, test);

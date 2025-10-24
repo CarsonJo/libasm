@@ -89,11 +89,11 @@ int main()
 	printf("//////////////////READ///////////////////////\n");
 	char buffer[6] = {0};
 
-	printf("ft_read(fd 0): %zd %s\n",ft_read(0,buffer, 5), buffer);
+	printf("ft_read(fd 0): %zd %s",ft_read(0,buffer, 5), buffer);
 	perror("ft_read_error");
 	errno = 0;
 	memset(buffer, 0, 6);
-	printf("read(fd 0): %zd %s\n",read(0,buffer, 5), buffer);
+	printf("read(fd 0): %zd %s",read(0,buffer, 5), buffer);
 	perror("read_error");
 	errno = 0;
 	memset(buffer, 0, 6);
@@ -108,11 +108,11 @@ int main()
 	memset(buffer, 0, 6);
 
 	fd = open("./test2.txt", O_CREAT | O_RDWR, S_IRWXU);
-	printf("ft_read(test2.txt): %zd %s\n",ft_read(fd, buffer, 5), buffer);
+	printf("ft_read(test2.txt): %zd %s",ft_read(fd, buffer, 5), buffer);
 	perror("ft_read_error");
 	errno = 0;
 	memset(buffer, 0, 6);
-	printf("read(test2.txt): %zd %s\n",read(fd, buffer, 5), buffer);
+	printf("read(test2.txt): %zd %s",read(fd, buffer, 5), buffer);
 	perror("read_error");
 	errno = 0;
 	close(fd);

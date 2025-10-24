@@ -5,11 +5,13 @@ SRC=read.s\
 		strlen.s\
 		write.s
 
-OBJ= $(SRC:%.s=%.o)
+OBJ= $(SRC:%.s=obj/%.o)
+
+OBJDIR = obj
 
 CSRC = main.c
 
-ASM=nasm
+ASMT=nasm
 
 ASMFLAGS=-f elf64
 
@@ -21,22 +23,26 @@ LIB = ar rcs
 
 all: lib $(EXE)
 
-lib: $(NAME)
+lib: $(OBJDIR) $(NAME)
 
 $(EXE):
 	gcc -Wall -Wextra -Werror main.c $(NAME) -o $(EXE)
 
 $(NAME): $(OBJ)
 	$(LIB) $(NAME) $(OBJ)
-	rm $(OBJ)
-%.o: %.s
-	$(ASM) $(ASMFLAGS) $^
+
+$(OBJDIR)/%.o: %.s
+	$(ASMT) $(ASMFLAGS) -o $@ $<
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
 
 clean:
-	rm $(NAME)
+	rm -f $(NAME)
+	rm -fr $(OBJDIR)
 
 fclean: clean
-	rm $(EXE)
+	rm -f $(EXE)
 
 re : fclean
 	make all

@@ -28,19 +28,24 @@ int main()
 
 	//////////////////////////////////////////////strcpy
 	printf("//////////////////STRCPY///////////////////////\n");
-	char empty_cpy[0];
-	char test_cpy[4];
-	char one_cpy[1];
+	char *empty_cpy = malloc(1);
+	char *test_cpy = malloc(5);
+	char *one_cpy = malloc(2);
 
-	char empty_cpy2[0];
-	char test_cpy2[4];
-	char one_cpy2[1];
+	char* empty_cpy2 = malloc(1);
+	char *test_cpy2 = malloc(5);
+	char *one_cpy2 = malloc(2);
 
 	printf("ft_strcpy(empty): %p %p %s\nstrcpy(empty): %p %p %s\n", ft_strcpy(empty_cpy, empty),empty_cpy, empty_cpy, strcpy(empty_cpy2, empty),empty_cpy2, empty_cpy2);
 	printf("ft_strcpy(one): %p %p %s\nstrcpy(one): %p %p %s\n", ft_strcpy(one_cpy, one), one_cpy, one_cpy, strcpy(one_cpy2, one),one_cpy2, one_cpy2 );
 	printf("ft_strcpy(test): %p %p %s\nstrcpy(test): %p %p %s\n", ft_strcpy(test_cpy, test),test_cpy , test_cpy , strcpy(test_cpy2, test),test_cpy2 , test_cpy2);
 
-
+	free(test_cpy2);
+	free(test_cpy);
+	free(one_cpy2);
+	free(one_cpy);
+	free(empty_cpy2);
+	free(empty_cpy);
 	//////////////////////////////////////////////strcmp
 	printf("//////////////////STRCMP///////////////////////\n");
 	char *test2 ="test2";
@@ -87,8 +92,9 @@ int main()
 
 	////////////////////////////////////////////read
 	printf("//////////////////READ///////////////////////\n");
-	char buffer[6] = {0};
+	char *buffer = malloc(6);
 
+	memset(buffer, 0, 6);
 	printf("ft_read(fd 0): %zd %s",ft_read(0,buffer, 5), buffer);
 	perror("ft_read_error");
 	errno = 0;
@@ -116,6 +122,7 @@ int main()
 	perror("read_error");
 	errno = 0;
 	close(fd);
+	free(buffer);
 	///////////////////////////////////////////strdup
 	printf("//////////////////STRDUP///////////////////////\n");
 	char *ret;

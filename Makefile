@@ -25,8 +25,8 @@ all: lib $(EXE)
 
 lib: $(OBJDIR) $(NAME)
 
-$(EXE):
-	gcc -Wall -Wextra -Werror main.c $(NAME) -o $(EXE)
+$(EXE): $(CSRC) $(NAME)
+	gcc -Wall -Wextra -Werror $(CSRC) $(NAME) -o $(EXE)
 
 $(NAME): $(OBJ)
 	$(LIB) $(NAME) $(OBJ)

@@ -1,23 +1,21 @@
-section .text   
+section .text
     global ft_strdup
     extern malloc
     extern ft_strlen
 ft_strdup:
-    push rbp
-    push rbx
-    push rdi
-    cld
-
+    push rdi;save variable
     call ft_strlen wrt ..plt
     mov rdi, rax
     add rdi, 1
-    mov rbx, rax
+    push rax ;save return from strlen
+	push rbp
     call malloc wrt ..plt
-    mov rcx, rbx
-    mov rdi, rax
+	pop rbp
+	pop rcx ;set up loop termination from strlen
     pop rsi
+
+    cld
+    mov rdi, rax ;dest string
     rep movsb
     mov [rdi], byte 0
-    pop rbx
-    pop rbp
     ret

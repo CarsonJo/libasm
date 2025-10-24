@@ -10,8 +10,10 @@ positive:
 	mov rax, -1
 	ret
 ft_write:
+	push rbp
 	mov rax, 1
 	syscall ; call write syscall number 1
 	cmp rax, 0
+	pop rbp
 	js positive ; si erreur transforme en positive pour l'ecrire dans errno
 	ret

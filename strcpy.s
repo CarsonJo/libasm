@@ -3,13 +3,13 @@ section .text
 
 ft_strcpy:
     cld
+	push rdi
 copy_loop:
     lodsb; load in al from [rsi]
     stosb; store al to [rdi]
     cmp al, 0
     jnz copy_loop
     sub rdi, 1
-    mov rax, rdi 
+    pop rax
     ret
-    
-    
+

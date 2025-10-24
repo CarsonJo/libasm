@@ -11,11 +11,9 @@ error:
 	ret
 ft_read:
 	push rbp
-	mov rbp,rsp
 	mov rax, 0
 	syscall
 	cmp rax, 0
-	js error
-	mov rsp, rbp
 	pop rbp
+	js error
 	ret
